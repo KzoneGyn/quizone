@@ -1,27 +1,108 @@
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Kzone Mystery Quiz</title>
-  <link rel="stylesheet" href="style.css"/>
-  <script defer src="script.js"></script>
+    <meta charset="UTF-8">
+    <title>HYBE FEST</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            background: linear-gradient(to right, #ff66cc, #cc66ff);
+            color: white;
+            text-align: center;
+            background-image: url('https://www.transparenttextures.com/patterns/8-bit.png');
+        }
+
+        h1 {
+            padding: 1em;
+            font-size: 1.5em;
+        }
+
+        .quiz-container {
+            margin: 2em auto;
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 2em;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #fff;
+        }
+
+        button {
+            margin: 1em 0;
+            padding: 1em;
+            font-size: 1em;
+            background-color: #ff99ff;
+            border: none;
+            border-radius: 10px;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #cc66cc;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .final-screen {
+            margin-top: 2em;
+        }
+
+        img.mascot {
+            width: 200px;
+            margin: 1em auto;
+            display: block;
+        }
+
+        .group-photo {
+            width: 90%;
+            margin-top: 1em;
+        }
+    </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🎮 Bem-vindo à KZONE</h1>
-    <p>Clique em Start para descobrir o tema do nosso próximo encontrinho!</p>
-    <button id="startBtn">Start</button>
-    <div id="quiz" class="hidden">
-      <p id="question"></p>
-      <input type="text" id="answerInput" placeholder="Digite sua resposta"/>
-      <button id="submitBtn">Verificar</button>
+    <audio id="bg-music" src="assets/bg-music.mp3" loop autoplay></audio>
+    <audio id="correct-sfx" src="assets/correct.mp3"></audio>
+
+    <h1>HYBE FEST</h1>
+    <div class="quiz-container">
+        <div id="quiz">
+            <p id="question">Quem é o grupo com o hit "Butter"?</p>
+            <div>
+                <button onclick="answer('errado')">TXT</button>
+                <button onclick="answer('certo')">BTS</button>
+                <button onclick="answer('errado')">NewJeans</button>
+            </div>
+        </div>
+        <div id="final" class="hidden">
+            <h2>Parabéns!</h2>
+            <p>Você completou o quiz do HYBE FEST 🎉</p>
+            <img class="mascot" src="assets/mascot.gif" alt="Mascote dançando">
+            <button onclick="showPhoto()">Clique aqui e confira uma foto dos grupos!</button>
+            <img id="groupPhoto" class="group-photo hidden" src="assets/hybe-groups.jpg" alt="Grupos da HYBE">
+        </div>
     </div>
-    <div id="result" class="hidden">
-      <h2>✨ HYBE FEST: Universo Multigrupos ✨</h2>
-      <img src="mascote.gif" alt="Mascote dançando" />
-    </div>
-  </div>
+
+    <script>
+        function answer(resp) {
+            if (resp === 'certo') {
+                document.getElementById('correct-sfx').play();
+                document.getElementById('quiz').classList.add('hidden');
+                document.getElementById('final').classList.remove('hidden');
+            } else {
+                alert("Tente novamente!");
+            }
+        }
+
+        function showPhoto() {
+            document.getElementById("groupPhoto").classList.remove("hidden");
+        }
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </body>
 </html>
