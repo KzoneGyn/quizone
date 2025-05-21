@@ -1,31 +1,27 @@
+
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KZONE Quiz</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kzone Mystery Quiz</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script defer src="script.js"></script>
 </head>
 <body>
   <div class="container">
-    <h1>🚀 Bem-vindo à KZONE</h1>
-    <p>Clique em <strong>Start</strong> para iniciar o quiz e descobrir o tema do próximo encontrinho!</p>
-    <button id="start-btn">Start</button>
-    <div id="quiz-container" class="hidden">
+    <h1>🎮 Bem-vindo à KZONE</h1>
+    <p>Clique em Start para descobrir o tema do nosso próximo encontrinho!</p>
+    <button id="startBtn">Start</button>
+    <div id="quiz" class="hidden">
       <p id="question"></p>
-      <input type="text" id="answer" placeholder="Digite sua resposta" />
-      <button id="submit-btn">Verificar</button>
+      <input type="text" id="answerInput" placeholder="Digite sua resposta"/>
+      <button id="submitBtn">Verificar</button>
     </div>
     <div id="result" class="hidden">
-      <h2>🎉 Tema Revelado!</h2>
-      <p>Parabéns, detetive do K-pop!</p>
-      <p class="highlight">✨ HYBE FEST: Universo Multigrupos ✨</p>
-      <p>Prepare-se para um encontro épico com a energia dos maiores grupos da HYBE.</p>
-      <img src="mascote-dancing.gif" alt="Mascote dançando" class="gif" />
+      <h2>✨ HYBE FEST: Universo Multigrupos ✨</h2>
+      <img src="mascote.gif" alt="Mascote dançando" />
     </div>
   </div>
-  <audio id="bg-music" src="audio/kpop-8bit.mp3" autoplay loop></audio>
-  <audio id="select-sound" src="audio/select.mp3"></audio>
-  <script src="script.js"></script>
 </body>
 </html>

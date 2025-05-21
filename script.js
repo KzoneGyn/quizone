@@ -1,44 +1,34 @@
-const startBtn = document.getElementById("start-btn");
-const quizContainer = document.getElementById("quiz-container");
-const resultContainer = document.getElementById("result");
-const questionEl = document.getElementById("question");
-const answerInput = document.getElementById("answer");
-const submitBtn = document.getElementById("submit-btn");
-const selectSound = document.getElementById("select-sound");
 
 const questions = [
-  { question: "Qual grupo tem um universo chamado 'BU'?", answer: "bts" },
-  { question: "Qual girlgroup da HYBE lançou 'OMG' e 'Hype Boy'?", answer: "newjeans" },
-  { question: "Qual boygroup da HYBE foi formado através do I-LAND?", answer: "enhypen" },
-  { question: "Qual girlgroup da HYBE tem uma integrante chamada Sakura?", answer: "le sserafim" },
-  { question: "Qual grupo da HYBE tem units como Hip Hop Team e Performance Team?", answer: "seventeen" }
+  { q: "Qual grupo tem um universo chamado 'BU'?", a: "bts" },
+  { q: "Qual girlgroup da HYBE lançou 'OMG' e 'Hype Boy'?", a: "newjeans" },
+  { q: "Qual boygroup da HYBE foi formado através do I-LAND?", a: "enhypen" },
+  { q: "Qual girlgroup da HYBE tem uma integrante chamada Sakura?", a: "le sserafim" },
+  { q: "Qual grupo da HYBE tem units como Hip Hop Team e Performance Team?", a: "seventeen" },
 ];
 
-let currentQuestion = 0;
+let current = 0;
 
-startBtn.addEventListener("click", () => {
-  startBtn.style.display = "none";
-  quizContainer.classList.remove("hidden");
+document.getElementById("startBtn").addEventListener("click", () => {
+  document.getElementById("quiz").classList.remove("hidden");
+  document.getElementById("startBtn").classList.add("hidden");
   showQuestion();
 });
 
-submitBtn.addEventListener("click", () => {
-  const userAnswer = answerInput.value.toLowerCase().trim();
-  selectSound.play();
-  if (userAnswer === questions[currentQuestion].answer) {
-    currentQuestion++;
-    if (currentQuestion < questions.length) {
+document.getElementById("submitBtn").addEventListener("click", () => {
+  const input = document.getElementById("answerInput").value.trim().toLowerCase();
+  if (input === questions[current].a.toLowerCase()) {
+    current++;
+    if (current < questions.length) {
       showQuestion();
-      answerInput.value = "";
     } else {
-      quizContainer.classList.add("hidden");
-      resultContainer.classList.remove("hidden");
+      document.getElementById("quiz").classList.add("hidden");
+      document.getElementById("result").classList.remove("hidden");
     }
-  } else {
-    alert("Resposta incorreta, tente novamente!");
   }
 });
 
 function showQuestion() {
-  questionEl.textContent = questions[currentQuestion].question;
+  document.getElementById("question").innerText = questions[current].q;
+  document.getElementById("answerInput").value = "";
 }
